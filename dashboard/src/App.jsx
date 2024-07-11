@@ -1,9 +1,13 @@
+import { useState } from "react"
+import Router from "./router/Router"
+import publicRoutes from "./router/routes/publicRoutes"
+
 const App= ()=> {
-  return (
-    <h1 className="text-3xl font-thin underline">
-      Sharad Vamsi
-    </h1>
-  )
+
+  const[allRoutes,setAllRoutes] = useState([...publicRoutes])
+  console.log(allRoutes)
+  
+  return <Router allRoutes={allRoutes}/>
 }
 
 export default App
