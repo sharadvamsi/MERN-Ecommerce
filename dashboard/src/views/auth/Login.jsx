@@ -1,9 +1,28 @@
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+import { useState } from "react";
 
 
 const Login = () => {
+
+
+    const[formData,setFormData]=useState({
+        email:"",password:""
+    })
+
+    const inputData = (e)=>{
+        setFormData({
+            ...formData,
+            [e.target.name]:e.target.value
+        })
+
+    }
+
+    const submitForm = (e)=>{
+        e.preventDefault();
+        console.log(formData);
+    }
     return (
         <div className="min-w-screen min-h-screen bg-[#d8f1f7] flex justify-center items-center">
             <div className="w-[350px] text-red-50 font-serif p-2">
@@ -11,16 +30,16 @@ const Login = () => {
                     <h2 className="text-xl mb-3 font-bold">Welcome to E-Commerce</h2>
                     <p className="text-sm mb-3 font-medium">Please Sign In to your account</p>
 
-                    <form>
+                    <form onSubmit={submitForm}>
                         
                         <div className="flex flex-col w-full gap-1 mb-3">
                             <label htmlFor="email"> Email</label>
-                            <input className="px-3 py-2 outline-none border border-slate-800 bg-slate-200 rounded-md text-black" type="email" name='email' placeholder="Enter your email" id="email" required />
+                            <input onChange={inputData} className="px-3 py-2 outline-none border border-slate-800 bg-slate-200 rounded-md text-black" type="email" name='email' value={formData.email} placeholder="Enter your email" id="email" required />
 
                         </div>
                         <div className="flex flex-col w-full gap-1 mb-3">
                             <label htmlFor="password"> Password</label>
-                            <input className="px-3 py-2 outline-none border border-slate-800 bg-slate-200 rounded-md text-black" type="password" name='password' placeholder="Enter your password" id="password" required />
+                            <input onChange={inputData} className="px-3 py-2 outline-none border border-slate-800 bg-slate-200 rounded-md text-black" type="password" name='password' value={formData.password} placeholder="Enter your password" id="password" required />
 
                         </div>
                         
