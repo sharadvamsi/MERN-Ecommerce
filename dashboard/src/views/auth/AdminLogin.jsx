@@ -1,12 +1,14 @@
 
 import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { admin_login } from "../../store/Reducers/authReducer";
 
 
 
 const AdminLogin = () => {
 
 
-
+    const dispatch = useDispatch()
 
     const [formData, setFormData] = useState({
         email: "", password: ""
@@ -22,7 +24,8 @@ const AdminLogin = () => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        console.log(formData);
+        dispatch(admin_login(formData))
+
     }
     return (
         <div className="min-w-screen min-h-screen bg-[#d8f1f7] flex justify-center items-center">
